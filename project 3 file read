@@ -1,0 +1,17 @@
+#include <stdio.h>
+
+int main(void) {
+    int x[3], y[3], z[3], e[3];
+    FILE* fp = fopen("eq.txt", "r");
+    if (!fp)
+        return 1;
+    for (int i = 0; i < 3; i++) {
+        fscanf(fp, "%dx%dy%dz=%d", &x[i], &y[i], &z[i], &e[i]);
+  }
+
+    for (int m = 0; m < 3; m++) {
+
+        printf("%d  %d   %d  %d\n", x[m], y[m], z[m], e[m]);
+}
+return 0;
+}
