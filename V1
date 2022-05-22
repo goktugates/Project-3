@@ -1,0 +1,39 @@
+#include <stdio.h>
+
+int main(void)
+{
+    float A[20][20];
+    int j = 0, i = 0, c, k, n=3 , x, y, z;
+    FILE* fp = fopen("equations.txt", "r");
+
+    for (i = 0; i < 3; i++)
+    {
+        fscanf(fp, "%fx%fy%fz=%f", &A[i][j], &A[i][j + 1], &A[i][j + 2], &A[i][j + 3]);
+        printf("%f\n%f\n%f\n%f\n", A[i][j], A[i][j+1], A[i][j+2], A[i][j+3]);
+    }
+    for(j=1; j<=n; j++)
+    {
+        for(i=1; i<=n; i++)
+        {
+            if(i!=j)
+            {
+                c=A[i][j]/A[j][j];
+                for(k=1; k<=n+1; k++)
+                {
+                    A[i][k]=A[i][k]-c*A[j][k];
+                }
+            }
+        }
+    }
+    printf("\nThe solution is:\n");
+    for(i=1; i<=n; i++)
+    {
+        x=A[i][n+1]/A[i][i];
+        printf("\n x%d=%d\n",i,x);
+    }
+    fclose(fp);
+    
+    return(0);
+
+
+}
